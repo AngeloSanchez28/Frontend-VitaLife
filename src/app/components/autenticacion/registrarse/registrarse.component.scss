@@ -1,0 +1,90 @@
+$background-color: #ffffff ;
+
+// Estilos específicos para el contenedor
+.bg-gray-100 {
+  background-color: $background-color;
+
+}
+
+
+/* Estilos para el encabezado "INICIAR SESIÓN" */
+h1 {
+  color: #000; /* Color del texto en negro */
+  font-family: 'Mulish', sans-serif; /* Fuente Mulish */
+  font-weight: bold; /* Texto en negrita */
+  font-size: 35px;
+  position: relative; /* Establecer posición relativa */
+}
+
+// boton
+.registrarme-button {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 10px;
+
+}
+
+.registrarme-button {
+  background-color: #4ABDAC; /* Cambiar el color de fondo al mismo que el de Registrar */
+  color: white;
+  border: 1px solid #4ABDAC; /* Añadir un borde igual al de Registrar */
+  transition: background-color 0.3s, color 0.3s, border 0.3s; /* Agregar transiciones para suavizar el cambio de estilo al pasar el cursor */
+}
+
+.registrarme-button:hover {
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+}
+/* Estilo fijo para el campo de entrada de texto */
+input {
+  border-color: #4ABDAC; /* Color fijo del borde */
+  border-width: 3px; /* Ancho del borde (ajusta según tus preferencias) */
+}
+
+.enlace {
+  color: black; /* Color de fuente original */
+  transition: color 0.3s;
+}
+
+.password-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute; // Agregamos posición absoluta para el botón
+  right: 10px; // Ajusta la posición a la derecha según sea necesario
+  top: 50%; // Alinea verticalmente el botón al centro
+  transform: translateY(-50%); // Centra verticalmente el botón
+  margin-left: -40px;
+}
+
+
+#ojo{
+  width: 40px; /* Establece el ancho deseado en píxeles */
+  height: 40px; /* Establece el alto deseado en píxeles */
+}
+
+.password-button-confirmacion {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute; // Agregamos posición absoluta para el botón
+  right: 10px; // Ajusta la posición a la derecha según sea necesario
+  top: 50%; // Alinea verticalmente el botón al centro
+  transform: translateY(-50%); // Centra verticalmente el botón
+  margin-left: -40px;
+}
+#ojo-confirmacion {
+  width: 40px; /* Establece el ancho deseado en píxeles */
+  height: 40px; /* Establece el alto deseado en píxeles */
+}
+
+
+

@@ -1,0 +1,114 @@
+<div class="bg-[rgba(74,189,172,0.2)] flex relative justify-center items-center" style="margin-top: -70px;">
+    <!-- Contenedor de imagen y texto -->
+    <div class="w-1/2 h-screen flex relative hidden lg:block mt-[-100px]">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+            <a routerLink="/landing">
+                <img src="./assets/vitalif.png" alt="Logo" style="max-width: 90px; height: auto; margin-right: 10px; margin-left: 50px; margin-top: -20px;">
+            </a>
+        </div>
+
+
+        <!-- Texto sobre la imagen -->
+        <div class="absolute top-4 left-44 w-1/2 h-full flex flex-col justify-start items-start pl-1 pt-8 text-white font-Montserrat">
+            <h1 class="text-3xl text-black font-Montserrat mb-4 whitespace-nowrap" style="margin-top: 80px;" >Únete a nuestra familia</h1>
+            <p class="text-lg text-black font-Montserrat mb-4 ">Para tener acceso a información y crear tus hábitos personalizados, así como unirte a la comunidad VitaLife!</p>
+        </div>
+        <!-- Imagen con fondo transparente -->
+        <img src="./assets/registrarse.png" alt="registrarse" class="object-cover w-full h-full">
+    </div>
+
+
+    <!-- Columna del formulario -->
+    <div class="lg:p-36 w-1/2 bg-white p-8">
+        <h1 class="text-2xl text-black font-Montserrat mb-4">Crea una cuenta</h1>
+        <form [formGroup]="miFormulario" (ngSubmit)="onSubmit()">
+            <!-- Mensaje de advertencia -->
+            <div *ngIf="formularioIncompleto" class="text-red-600">
+                Rellena todos los campos.
+            </div>
+
+            <!-- Campo nombre y apellidos -->
+            <div class="mb-4">
+                <label for="nombre_apellido" id="nombre_apellido" class="block text-black font-Montserrat text-xl mb-2">Nombre y Apellidos:</label>
+                <input type="text" formControlName="nombre_apellido" placeholder="Ingresa tu nombre y apellidos" class="w-full border border-gray-300 rounded-md py-3 px-3 focus:outline-none">
+                <div *ngIf="miFormulario.controls['nombre_apellido'].touched && miFormulario.controls['nombre_apellido'].errors?.['required']" class="text-red-600">Este campo es obligatorio.</div>
+                <div *ngIf="miFormulario.controls['nombre_apellido'].touched && miFormulario.controls['nombre_apellido'].errors?.['espacioInicial']" class="text-red-600">No se permite un espacio inicial.</div>
+            </div>
+
+
+
+            <!-- Campo usuario -->
+            <div class="mb-4">
+                <label for="usuario" id="usuario" class="block text-black font-Montserrat text-xl mb-2">Usuario:</label>
+                <input type="text" formControlName="usuario" placeholder="Ingresa tu usuario" class="w-full border border-gray-300 rounded-md py-3 px-3 focus:outline-none">
+                <div *ngIf="miFormulario.controls['password'].touched && miFormulario.controls['password'].errors?.['required']" class="text-red-600">Este campo es obligatorio.</div>
+                <div *ngIf="miFormulario.controls['usuario'].touched && miFormulario.controls['usuario'].errors?.['minlength']" class="text-red-600">El usuario debe tener al menos 4 caracteres.</div>
+            </div>
+
+            <!-- Campo correo electrónico -->
+            <div class="mb-4">
+                <label for="email" id="email" class="block text-black font-Montserrat text-xl mb-2">Correo Electrónico:</label>
+                <input type="email" formControlName="email" placeholder="Ingresa tu correo electrónico" class="w-full border border-gray-300 rounded-md py-3 px-3 focus:outline-none">
+                <div *ngIf="miFormulario.controls['email'].touched && miFormulario.controls['email'].errors?.['required']" class="text-red-600">Este campo es obligatorio.</div>
+                <div *ngIf="miFormulario.controls['email'].touched && miFormulario.controls['email'].errors?.['email']" class="text-red-600">Por favor, ingresa un correo electrónico válido.</div>
+            </div>
+
+
+            <!-- Campo contraseña -->
+            <div class="mb-4 relative">
+                <label for="password" class="block text-black font-Montserrat text-xl mb-2">Contraseña:</label>
+                <input [type]="mostrarPassword ? 'text' : 'password'" formControlName="password" placeholder="Ingresa tu contraseña" id="password" class="w-full border border-gray-300 rounded-md py-3 px-3 focus:outline-none pr-10">
+                <button type="button" (click)="toggleMostrarPassword()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5" style="top: 60%; transform: translateY(-30%);">
+                    <img  id="ojo" [src]="mostrarPassword ? './assets/ocultar.png' : './assets/mostrar.png'" [alt]="mostrarPassword ? 'Ocultar Contraseña' : 'Mostrar Contraseña'" class="eye-icon">
+                </button>
+                <div *ngIf="miFormulario.controls['password'].touched && miFormulario.controls['password'].errors?.['required']" class="text-red-600">Este campo es obligatorio.</div>
+                <div *ngIf="miFormulario.controls['password'].touched && miFormulario.controls['password'].errors?.['minlength']" class="text-red-600">La contraseña debe tener como mínimo 8 caracteres</div>
+            </div>
+
+            <!-- Campo confirmar contraseña -->
+            <div class="mb-4 relative">
+                <label for="password_confirmation" class="block text-black font-Montserrat text-xl mb-2">Confirmar Contraseña:</label>
+                <input [type]="mostrarPasswordConfirmation ? 'text' : 'password'" formControlName="password_confirmation" placeholder="Ingresa tu contraseña nuevamente" id="password_confirmation" class="w-full border border-gray-300 rounded-md py-3 px-3 focus:outline-none pr-10">
+                <button type="button" (click)="toggleMostrarPasswordConfirmation()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5" style="top: 60%; transform: translateY(-30%);">
+                    <img id="ojo-confirmacion" [src]="mostrarPasswordConfirmation ? './assets/ocultar.png' : './assets/mostrar.png'" [alt]="mostrarPasswordConfirmation ? 'Ocultar Contraseña' : 'Mostrar Contraseña'" class="eye-icon">
+                </button>
+                <div *ngIf="miFormulario.hasError('mismatch')" class="text-red-600">Las contraseñas no coinciden</div>
+            </div>
+
+
+            <div class="mb-4 relative">
+                <label for="foto" class="block text-black font-Montserrat text-xl mb-2">Subir Foto:</label>
+                <!-- Tu input para subir archivos -->
+                <input type="file" name="foto" id="foto" (change)="onFileChange($event)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" accept="image/*">
+                <label for="foto" class="absolute inset-0 flex items-center justify-end cursor-pointer z-0">
+                    <img src="./assets/subir.png" id="subir" alt="Subir foto" width="60" height="60" style="margin-top: 40px;">
+                </label>
+                <!-- Input para mostrar el nombre del archivo -->
+                <input type="text" [value]="nombreArchivo" disabled class="w-full border border-gray-300 rounded-md py-3 px-3 mt-2" placeholder="Nombre del archivo">
+
+                <!-- Mensaje de error si la foto es obligatoria y no se ha seleccionado -->
+                <div *ngIf="miFormulario.controls['foto'].touched && miFormulario.controls['foto'].errors?.['required']" class="text-red-600">
+                    La foto es obligatoria.
+                </div>
+            </div>
+
+
+
+            <!-- Botón de registro -->
+            <div class="my-4 flex items-center justify-center space-x-4">
+                <button type="submit" class="registrarme-button rounded-md py-2 px-4" [disabled]="!miFormulario.valid">Registrarme</button>
+            </div>
+        </form>
+
+
+
+        <!-- Enlace para iniciar sesión -->
+        <div class="mt-6 text-center">
+            <a routerLink="/login" class="enlace hover:underline">¿Ya estás registrado? Inicia sesión</a>
+        </div>
+
+    </div>
+
+</div>
+
+
