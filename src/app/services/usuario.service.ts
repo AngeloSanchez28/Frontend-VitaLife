@@ -9,7 +9,7 @@ import {Usuario} from "../models/usuario";
 export class UsuarioService {
 
   private apiUrl= 'http://100.24.28.180/usuario/verperfil/1';
-  private token = 'Mp9ox0pHtshkmgptH/c3xA9yEOqhLONVyeiStw8l5OKQD43tsjM4Rm0zJbFTa9VZIhZzPvdLXrXKsz5CxSWzxtl9TW8FuWiwN7YoI28SDPE3aXcN7Yoo1oUO33jpE2NsJcWFw2vl2UmMeLBj+d2fvTkYY8KcRwp0UFitzt4GFidaaMqd/omCZDxae0i99VLlku8D1/VvlkuEQdj5ysQuDTDKQ027M5LnzEiRMQfOi8VNWL7OolDCRlQjq0kAvPKaslID4H6WpPUwLpIQkIACQg==';
+  private token = 'Mp9ox0pHtshkmgptH/c3xA9yEOqhLONVyeiStw8l5OKQD43tsjM4Rm0zJbFTa9VZIhZzPvdLXrXKsz5CxSWzxtl9TW8FuWiwN7YoI28SDPH2lmmHSlpnwf9hY916IjPVpnmpZx7Pc8H+yFwyDDJQw/nOlxTkmU7tmIJ+NZAyKLI5EYmkGGFxDmCnnAud02ybuvEPFV8A9u7WPdmP8gDnRTeKTY3lmbBclNuyU5J0Mh6SkO9opmonwJbLIOEiyD7Od+Tq+ax599xbv0EZBjv/Vw==';
 
   constructor(private http: HttpClient) {}
 
