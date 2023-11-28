@@ -8,6 +8,7 @@ import {PruebaComponent} from "./prueba/prueba.component";
 import {IntranetComponent} from "./intranet.component";
 import {MatTableModule} from "@angular/material/table";
 import { Prueba2Component } from './prueba2/prueba2.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -18,14 +19,15 @@ import { Prueba2Component } from './prueba2/prueba2.component';
     IntranetComponent,
     Prueba2Component,
   ],
-  imports: [
-    CommonModule,
-    intranetRoutingModule,
-    RouterModule,
-    LayoutModule,
-    NgOptimizedImage,
-    CommonModule,
-    MatTableModule,
-  ]
+    imports: [
+        CommonModule,
+        intranetRoutingModule,
+        RouterModule,
+        LayoutModule,
+        NgOptimizedImage,
+        CommonModule,
+        MatTableModule,
+        FormsModule,
+    ]
 })
 export class IntranetModule { }
