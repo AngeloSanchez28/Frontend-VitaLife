@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {IndexComponent} from "./index/index.component";
 import {IntranetComponent} from "./intranet.component";
 import {PruebaComponent} from "./prueba/prueba.component";
+import {Prueba2Component} from "./prueba2/prueba2.component";
 
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
     children: [
       {path: 'index', component: IndexComponent },
       {path: 'prueba', component: PruebaComponent},
+      {path: 'prueba2', component: Prueba2Component},
     ],
   }
 ];

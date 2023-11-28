@@ -7,6 +7,7 @@ import {intranetRoutingModule} from "./intranet-routing.module";
 import {PruebaComponent} from "./prueba/prueba.component";
 import {IntranetComponent} from "./intranet.component";
 import {MatTableModule} from "@angular/material/table";
+import { Prueba2Component } from './prueba2/prueba2.component';
 
 
 
@@ -15,6 +16,7 @@ import {MatTableModule} from "@angular/material/table";
     IndexComponent,
     PruebaComponent,
     IntranetComponent,
+    Prueba2Component,
   ],
   imports: [
     CommonModule,
