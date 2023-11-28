@@ -76,30 +76,11 @@
             </div>
 
 
-            <div class="mb-4 relative">
-                <label for="foto" class="block text-black font-Montserrat text-xl mb-2">Subir Foto:</label>
-                <!-- Tu input para subir archivos -->
-                <input type="file" name="foto" id="foto" (change)="onFileChange($event)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" accept=".png, .jpg, .jpeg">
-                <label for="foto" class="absolute inset-0 flex items-center justify-end cursor-pointer z-0">
-                    <img src="./assets/subir.png" id="subir" alt="Subir foto" width="60" height="60" style="margin-top: 40px;">
-                </label>
-                <!-- Input para mostrar el nombre del archivo -->
-                <input type="text" [value]="nombreArchivo" disabled class="w-full border border-gray-300 rounded-md py-3 px-3 mt-2" placeholder="Nombre del archivo">
-
-                <!-- Mensaje de error si la foto es obligatoria y no se ha seleccionado -->
-                <div *ngIf="miFormulario.controls['foto'].touched && miFormulario.controls['foto'].errors?.['required']" class="text-red-600">
-                    La foto es obligatoria.
-                </div>
-            </div>
-
-
-
             <!-- Botón de registro -->
             <div class="my-4 flex items-center justify-center space-x-4">
-                <button type="submit" class="registrarme-button rounded-md py-2 px-4" [disabled]="!miFormulario.valid">Registrarme</button>
+                <button type="submit" routerLink="/autenticacion/inciar-sesion" class="registrarme-button rounded-md py-2 px-4" >Registrarme</button>
             </div>
         </form>
-
 
 
         <!-- Enlace para iniciar sesión -->

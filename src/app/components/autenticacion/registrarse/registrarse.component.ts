@@ -58,7 +58,6 @@ export class RegistrarseComponent {
     this.mostrarPasswordConfirmation = !this.mostrarPasswordConfirmation;
   }
 
-
   onSubmit() {
     if (this.miFormulario.invalid) {
       this.formularioIncompleto = true; // Muestra el mensaje de advertencia
@@ -66,7 +65,7 @@ export class RegistrarseComponent {
       this.formularioIncompleto = false;
 
       // Suponiendo que el procesamiento del formulario fue exitoso, redirigir al usuario a la página de inicio de sesión
-      this.router.navigate(['login']); // Asegúrate de reemplazar '/ruta-inicio-sesion' con la ruta correcta
+      this.router.navigate(['/autenticacion/iniciar-sesion']); // Asegúrate de reemplazar '/ruta-inicio-sesion' con la ruta correcta
     }
   }
 
