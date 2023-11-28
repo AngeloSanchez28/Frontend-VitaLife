@@ -1,1 +1,287 @@
-<p>index works!</p>
+
+
+<section class="resumen contenedor">
+  <div class="miniperfil">
+    <div class="perfil1">
+      <img class="shi" src="./assets/perfil.png"  alt="">
+    </div>
+    <div class="perfil1 letra-perfil">
+      <h4 >Rusbel Abanto Machuca</h4>
+      <h4 >@Ruvercitotupapi</h4>
+    </div>
+  </div>
+  <div class="medallas">
+    <h1 class="titulo">Titulos obtenidos</h1>
+    <div class="interior">
+      <div>
+        <img class="img-medallas" src="./assets/oro.png" alt="">
+      </div>
+      <div>
+        <h1>2</h1>
+        <h5>Medalla de oro</h5>
+      </div>
+    </div>
+    <div class="interior">
+      <div>
+        <img class="img-medallas" src="./assets/plata.png" alt="">
+      </div>
+      <div>
+        <h1>2</h1>
+        <h5>Medalla de plata</h5>
+      </div>
+    </div>
+    <div class="interior">
+      <div>
+        <img class="img-medallas" src="./assets/bronce.png" alt="">
+      </div>
+      <div>
+        <h1>4</h1>
+        <h5>Medalla de bronce</h5>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="contenedor">
+  <div class="minicontenedor" id="minicontenedor1">
+    <div class="habitos">
+      <div class="nombre">
+        <h1>Hábitos Establecidos</h1>
+      </div>
+      <div class="iconos">
+        <button class="contenedor-icono button" (click)="habito1()" >
+          <img class="imagen-icono" src="./assets/estandar.png" alt="">
+        </button>
+        <button class="contenedor-icono" (click)="habito2()" >
+          <img class="imagen-icono" src="./assets/persona.png" alt="">
+        </button>
+        <button class="contenedor-icono" (click)="habito3()" >
+          <img class="imagen-icono" src="./assets/grupo.png" alt="">
+        </button>
+      </div>
+    </div>
+    <div>
+      <table class="tabla">
+        <tr *ngFor="let habito of habitosEstablecidos; let i = index" class="trow">
+          <td>
+            <!-- Botón para mostrar el modal con el índice del hábito -->
+            <button (click)="mostrarModal(i, 'felicidades')" class="boton1" style="align-items: center; justify-content: center; display: flex;">
+              <svg class="h-8 w-8 text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </button>
+          </td>
+          <td style="width: 500px;">
+            <!-- Detalles del hábito -->
+            <div style="justify-content: end; padding-left: 20px; background: #fff; height: 30px;">
+              <p style="padding-top: 6px;">{{ habito }}</p>
+            </div>
+          </td>
+          <td>
+            <!-- Otro botón para mostrar el modal con el índice del hábito -->
+            <button (click)="mostrarModal(i, 'perdida')" class="boton2" style="align-items: center; justify-content: center; display: flex;">
+              <svg class="h-8 w-8 text" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </td>
+        </tr>
+        <!-- Modal fuera del bucle *ngFor -->
+        <div class="modal" [ngClass]="{'show': showModal, 'hide': !showModal}">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 *ngIf="tipoMensajeModal === 'felicidades'">Felicidades</h2>
+              <h2 *ngIf="tipoMensajeModal === 'perdida'">Oh no!</h2>
+            </div>
+            <div class="modal-body">
+              <p *ngIf="tipoMensajeModal === 'felicidades'">Te ganaste 3 puntos</p>
+              <p *ngIf="tipoMensajeModal === 'perdida'">Has perdido 1 punto</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn-aceptar" (click)="borrarHabito()" style="font-size: 22px;">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </table>
+    </div>
+  </div>
+
+
+
+  <div class="minicontenedor" id="minicontenedor2">
+    <div class="habitos">
+      <div class="nombre">
+        <h1>Hábitos Personalizados</h1>
+      </div>
+      <div class="iconos">
+        <button class="contenedor-icono" [class.active]="botonActivo === 1" (click)="habito1()">
+          <img class="imagen-icono" src="./assets/estandar.png" alt="">
+        </button>
+        <button class="contenedor-icono" [class.active]="botonActivo === 2" (click)="habito2()">
+          <img class="imagen-icono" src="./assets/persona.png" alt="">
+        </button>
+        <button class="contenedor-icono" [class.active]="botonActivo === 3" (click)="habito3()">
+          <img class="imagen-icono" src="./assets/grupo.png" alt="">
+        </button>
+      </div>
+    </div>
+    <div>
+      <form id="habitoPersonal2" (ngSubmit)="agregarHabito(habitoForm)" #habitoForm="ngForm">
+        <input type="text" id="fname3" name="nombreHabito" [(ngModel)]="nuevoHabito" placeholder="Tu nuevo hábito personalizado" required>
+        <button type="submit" class="enviar">Enviar</button>
+      </form>
+      <!-- Tabla para mostrar los hábitos en grupo agregados -->
+      <table class="tabla">
+        <tbody>
+        <tr *ngFor="let habito of habitosAgregados; let i = index" class="trow">
+          <!-- Botón de acción para hábito en grupo -->
+          <td>
+            <button (click)="mostrarModalAprobado(i)" class="boton1" style="align-items: center; justify-content: center; display: flex;">
+              <svg class="h-8 w-8 text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </button>
+            <div class="modal" *ngIf="showModalAprobado">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2>Felicidades</h2>
+                </div>
+                <div class="modal-body">
+                  <p>Te ganaste 3 puntos</p>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn-aceptar" (click)="eliminarHabitoPersonalizado()" style="font-size: 22px;">Aceptar</button>
+                </div>
+              </div>
+            </div>
+          </td>
+          <!-- Nombre del hábito en grupo -->
+          <td style="width: 500px;">
+            <div style="justify-content: end; padding-left: 20px; background: #fff; height: 30px;">
+              <p style="padding-top: 6px;">{{ habito }}</p>
+            </div>
+          </td>
+
+          <td>
+            <button class="boton2" (click)="mostrarModalPerder(i)" style="align-items: center; justify-content: center; display: flex;">
+              <svg class="h-8 w-8 text" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div class="modal" *ngIf="showModalPerder">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2>Oh no!</h2>
+                </div>
+                <div class="modal-body">
+                  <p>Has perdido 1 punto</p>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn-aceptar" (click)="eliminarHabitoPersonalizado()" style="font-size: 22px;">Aceptar</button>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="habitosAgregados.length === 0" class="trow">
+          <!-- Mensaje si no hay hábitos en grupo agregados aún -->
+          <td colspan="3">
+            <p style="text-align: center; color: gray; font-size: 20px;">No hay hábitos en grupo agregados aún</p>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+
+  <div class="minicontenedor" id="minicontenedor3">
+    <div class="habitos">
+      <div class="nombre">
+        <h1>Hábitos En Grupo</h1>
+      </div>
+      <div class="iconos">
+        <button class="contenedor-icono" [class.active]="botonActivo === 1" (click)="habito1()">
+          <img class="imagen-icono" src="./assets/estandar.png" alt="">
+        </button>
+        <button class="contenedor-icono" [class.active]="botonActivo === 2" (click)="habito2()">
+          <img class="imagen-icono" src="./assets/persona.png" alt="">
+        </button>
+        <button class="contenedor-icono" [class.active]="botonActivo === 3" (click)="habito3()">
+          <img class="imagen-icono" src="./assets/grupo.png" alt="">
+        </button>
+      </div>
+    </div>
+    <div>
+      <!-- Formulario para agregar hábitos en grupo -->
+      <form (ngSubmit)="agregarHabitoEnGrupo(habitoFormGrupo)" #habitoFormGrupo="ngForm">
+        <input type="text" id="fname3" name="nombreHabito" [(ngModel)]="nuevoHabitoEnGrupo" placeholder="Tu nuevo hábito en grupo" required>
+        <button type="submit" class="enviar">Enviar</button>
+      </form>
+      <!-- Tabla para mostrar los hábitos en grupo agregados -->
+      <table class="tabla">
+        <tbody>
+        <tr *ngFor="let habito of habitosEnGrupo; let i = index" class="trow">
+          <!-- Botón de acción para hábito en grupo -->
+          <td>
+            <button (click)="mostrarModalFelicidades(i)" class="boton1" style="align-items: center; justify-content: center; display: flex;">
+              <svg class="h-8 w-8 text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </button>
+            <div class="modal" *ngIf="showModalFelicidades">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2>Felicidades</h2>
+                </div>
+                <div class="modal-body">
+                  <p>Te ganaste 3 puntos</p>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn-aceptar" (click)="eliminarHabitoEnGrupo()" style="font-size: 22px;">Aceptar</button>
+                </div>
+              </div>
+            </div>
+          </td>
+          <!-- Nombre del hábito en grupo -->
+          <td style="width: 500px;">
+            <div style="justify-content: end; padding-left: 20px; background: #fff; height: 30px;">
+              <p style="padding-top: 6px;">{{ habito }}</p>
+            </div>
+          </td>
+
+          <td>
+            <button class="boton2" (click)="mostrarModalPerdida(i)" style="align-items: center; justify-content: center; display: flex;">
+              <svg class="h-8 w-8 text" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div class="modal" *ngIf="showModalPerdida">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2>Oh no!</h2>
+                </div>
+                <div class="modal-body">
+                  <p>Has perdido 1 punto</p>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn-aceptar" (click)="eliminarHabitoEnGrupo()" style="font-size: 22px;">Aceptar</button>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="habitosEnGrupo.length === 0" class="trow">
+          <!-- Mensaje si no hay hábitos en grupo agregados aún -->
+          <td colspan="3">
+            <p style="text-align: center; color: gray; font-size: 20px;">No hay hábitos en grupo agregados aún</p>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
