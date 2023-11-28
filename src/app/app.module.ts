@@ -6,14 +6,11 @@ import {NgOptimizedImage} from "@angular/common";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { IntranetComponent } from './components/intranet/intranet.component';
-import { IndexComponent } from './components/intranet/index/index.component';
+import {LayoutModule} from "./components/layout/layout.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    IntranetComponent,
-    IndexComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +20,7 @@ import { IndexComponent } from './components/intranet/index/index.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

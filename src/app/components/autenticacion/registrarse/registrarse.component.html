@@ -79,7 +79,7 @@
             <div class="mb-4 relative">
                 <label for="foto" class="block text-black font-Montserrat text-xl mb-2">Subir Foto:</label>
                 <!-- Tu input para subir archivos -->
-                <input type="file" name="foto" id="foto" (change)="onFileChange($event)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" accept="image/*">
+                <input type="file" name="foto" id="foto" (change)="onFileChange($event)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" accept=".png, .jpg, .jpeg">
                 <label for="foto" class="absolute inset-0 flex items-center justify-end cursor-pointer z-0">
                     <img src="./assets/subir.png" id="subir" alt="Subir foto" width="60" height="60" style="margin-top: 40px;">
                 </label>
@@ -104,7 +104,7 @@
 
         <!-- Enlace para iniciar sesión -->
         <div class="mt-6 text-center">
-            <a routerLink="/login" class="enlace hover:underline">¿Ya estás registrado? Inicia sesión</a>
+            <a routerLink="/autenticacion/iniciar-sesion" class="enlace hover:underline">¿Ya estás registrado? Inicia sesión</a>
         </div>
 
     </div>
