@@ -1,0 +1,70 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+
+}
+
+.div{
+  background-color: rgba(74, 189, 172, 1);
+  display: flex;
+  align-items: center;
+  right: 10%;
+  position: absolute;
+
+}
+header{
+  background-color: rgba(74, 189, 172, 1);
+  display: flex;
+  align-items: center;
+  height: 100px;
+  padding: 5px 10%;
+
+
+}
+
+
+.logo{
+  cursor: pointer;
+}
+
+.img{
+  height: 85px;
+  width: auto;
+  transition: all 0.3s;
+}
+
+.img:hover{
+  transform: scale(1.2);
+}
+
+.nav-links li{
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.nav-links li:hover{
+  transform: scale(1.1);
+}
+
+.nav-links a{
+  font-size: 700;
+  color: #000000;
+  text-decoration: none;
+}
+
+.nav-links li a:hover{
+  color: #fff;
+}
+
+.img2{
+  height: 45px;
+  width: auto;
+  transition: all 0.3s;
+}
+
+.img2:hover{
+  transform: scale(1.4);
+}

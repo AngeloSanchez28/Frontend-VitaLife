@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { IntranetComponent } from './components/intranet/intranet.component';
+import { IndexComponent } from './components/intranet/index/index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IntranetComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
