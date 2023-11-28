@@ -6,10 +6,12 @@ import {NgOptimizedImage} from "@angular/common";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import { IntranetComponent } from './components/intranet/intranet.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    IntranetComponent,
   ],
   imports: [
     BrowserModule,
