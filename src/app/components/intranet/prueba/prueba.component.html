@@ -1,0 +1,13 @@
+<h1>prueba</h1>
+<mat-table [dataSource]="dataSource">
+    <!-- Definir las columnas de la tabla -->
+    <ng-container matColumnDef="habito">
+        <mat-header-cell *matHeaderCellDef> Habito </mat-header-cell>
+        <mat-cell *matCellDef="let habito"> {{ habito.id }} </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+<div class="no-data-message" *ngIf="noDataMessage">{{ noDataMessage }}</div>
