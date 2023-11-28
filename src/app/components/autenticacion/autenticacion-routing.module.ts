@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {RegistrarseComponent} from "./registrarse/registrarse.component";
-import {IniciarSesionComponent} from "./iniciar-sesion/iniciar-sesion.component";
 import {AutenticacionComponent} from "./autenticacion.component";
+import {IniciarSesionComponent} from "./iniciar-sesion/iniciar-sesion.component";
 
 const routes: Routes = [
   { path: '',

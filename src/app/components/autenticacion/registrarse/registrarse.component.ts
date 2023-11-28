@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-registrarse',
   templateUrl: './registrarse.component.html',
-  styleUrls: ['./registrarse.component.scss']
+  styleUrls: ['registrarse.component.scss']
 })
 export class RegistrarseComponent {
   miFormulario: FormGroup;
