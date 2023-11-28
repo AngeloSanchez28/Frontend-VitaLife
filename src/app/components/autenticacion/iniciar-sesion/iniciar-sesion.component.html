@@ -1,0 +1,46 @@
+<!-- component -->
+<div class="bg-gray-100 flex justify-center items-center h-screen">
+  <!-- Left: Image -->
+  <div class="w-1/2 h-screen hidden lg:block">
+    <img src="./assets/fruta.png" alt="Placeholder Image" class="object-cover w-full h-full">
+  </div>
+
+  <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+    <h1 class> Inicia Sesión en VitaLife</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!-- Campo de usuario -->
+      <div class="mb-4">
+        <label for="usuario" id="usuario" class="block text-black font-Montserrat text-2xl">Usuario:</label>
+        <input type="text" formControlName="usuario" placeholder="Ingresa tu usuario" class="w-full border border-gray-300 rounded-md py-3 px-3 focus:outline-none" autocomplete="off">
+        <div *ngIf="loginForm.controls['usuario'].touched && loginForm.controls['usuario'].errors?.['required']" class="text-red-600">Este campo es obligatorio.</div>
+      </div>
+
+      <!-- Campo de contraseña -->
+      <div class="mb-4">
+        <label for="contrasena" class="block text-black font-Montserrat text-2xl">Contraseña:</label>
+        <div class="password-input-container">
+          <!-- Utiliza la propiedad mostrarPassword para cambiar el tipo de input -->
+          <input [type]="mostrarPassword ? 'text' : 'password'" placeholder="Ingresa tu contraseña" id="contrasena" name="contrasena" class="w-full border border-gray-300 rounded-md py-3 px-3  focus:outline-none" autocomplete="off">
+          <!-- Elimina el atributo onclick y utiliza (click) para llamar a toggleMostrarPassword() -->
+          <button id="show-password-button" type="button" class="show-password-button" (click)="toggleMostrarPassword()">
+            <!-- Cambia la imagen y el texto alternativo en función del estado de mostrarPassword -->
+            <img id="eye-icon" [src]="mostrarPassword ? './assets/ocultar.png' : './assets/mostrar.png'" [alt]="mostrarPassword ? 'Ocultar Contraseña' : 'Mostrar Contraseña'" />
+          </button>
+        </div>
+      </div>
+
+
+
+      <!-- Enlace de ¿Olvidaste tu contraseña? -->
+      <div class="mb-6 ">
+        <a href="#" class="enlace hover:underline">¿Olvidaste tu contraseña?</a>
+      </div>
+      <!-- Botón de Iniciar Sesión -->
+      <button type="submit" class="login-button rounded-md py-2 px-4 w-full">Iniciar sesión</button>
+    </form>
+    <!-- Enlace de Regístrate -->
+    <div class="mt-6  text-center">
+      <a routerLink="/register" class="enlace hover:underline">¿No tienes una cuenta? Regístrate aquí</a>
+    </div>
+  </div>
+</div>
