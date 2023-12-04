@@ -27,28 +27,18 @@
                 Rellena todos los campos.
             </div>
 
-            <!-- Campo nombre y apellidos -->
-            <div class="mb-4">
-                <label for="nombre_apellido" id="nombre_apellido" class="block text-black font-Montserrat text-xl mb-2">Nombre y Apellidos:</label>
-                <input type="text" formControlName="nombre_apellido" placeholder="Ingresa tu nombre y apellidos" class="w-full border border-gray-300 rounded-md py-3 px-3 focus:outline-none">
-                <div *ngIf="miFormulario.controls['nombre_apellido'].touched && miFormulario.controls['nombre_apellido'].errors?.['required']" class="text-red-600">Este campo es obligatorio.</div>
-                <div *ngIf="miFormulario.controls['nombre_apellido'].touched && miFormulario.controls['nombre_apellido'].errors?.['espacioInicial']" class="text-red-600">No se permite un espacio inicial.</div>
-            </div>
-
-
-
             <!-- Campo usuario -->
             <div class="mb-4">
-                <label for="usuario" id="usuario" class="block text-black font-Montserrat text-xl mb-2">Usuario:</label>
-                <input type="text" formControlName="usuario" placeholder="Ingresa tu usuario" class="w-full border border-gray-300 rounded-md py-3 px-3 focus:outline-none">
-                <div *ngIf="miFormulario.controls['password'].touched && miFormulario.controls['password'].errors?.['required']" class="text-red-600">Este campo es obligatorio.</div>
+                <label for="usuario" class="block text-black font-Montserrat text-xl mb-2">Usuario:</label>
+                <input type="text" id="usuario" formControlName="usuario" placeholder="Ingresa tu usuario" class="w-full border border-gray-300 rounded-md py-3 px-3 focus:outline-none">
+                <div *ngIf="miFormulario.controls['usuario'].touched && miFormulario.controls['usuario'].errors?.['required']" class="text-red-600">Este campo es obligatorio.</div>
                 <div *ngIf="miFormulario.controls['usuario'].touched && miFormulario.controls['usuario'].errors?.['minlength']" class="text-red-600">El usuario debe tener al menos 4 caracteres.</div>
             </div>
 
             <!-- Campo correo electrónico -->
             <div class="mb-4">
-                <label for="email" id="email" class="block text-black font-Montserrat text-xl mb-2">Correo Electrónico:</label>
-                <input type="email" formControlName="email" placeholder="Ingresa tu correo electrónico" class="w-full border border-gray-300 rounded-md py-3 px-3 focus:outline-none">
+                <label for="email" class="block text-black font-Montserrat text-xl mb-2">Correo Electrónico:</label>
+                <input type="email"  id="email" formControlName="email" placeholder="Ingresa tu correo electrónico" class="w-full border border-gray-300 rounded-md py-3 px-3 focus:outline-none">
                 <div *ngIf="miFormulario.controls['email'].touched && miFormulario.controls['email'].errors?.['required']" class="text-red-600">Este campo es obligatorio.</div>
                 <div *ngIf="miFormulario.controls['email'].touched && miFormulario.controls['email'].errors?.['email']" class="text-red-600">Por favor, ingresa un correo electrónico válido.</div>
             </div>
@@ -78,7 +68,7 @@
 
             <!-- Botón de registro -->
             <div class="my-4 flex items-center justify-center space-x-4">
-                <button type="submit" routerLink="/autenticacion/inciar-sesion" class="registrarme-button rounded-md py-2 px-4" >Registrarme</button>
+                <button type="submit" class="registrarme-button rounded-md py-2 px-4" >Registrarme</button>
             </div>
         </form>
 

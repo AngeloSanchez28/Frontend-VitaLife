@@ -8,6 +8,7 @@ import {UsuarioService} from "../../../services/usuario.service";
   styleUrls: ['./prueba2.component.scss']
 })
 export class Prueba2Component implements OnInit {
+
   @Input() usuarioId: number=0;
   usuario!: Usuario;
 
