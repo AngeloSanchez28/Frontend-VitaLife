@@ -52,7 +52,7 @@
                     <img  id="ojo" [src]="mostrarPassword ? './assets/ocultar.png' : './assets/mostrar.png'" [alt]="mostrarPassword ? 'Ocultar Contraseña' : 'Mostrar Contraseña'" class="eye-icon">
                 </button>
                 <div *ngIf="miFormulario.controls['password'].touched && miFormulario.controls['password'].errors?.['required']" class="text-red-600">Este campo es obligatorio.</div>
-                <div *ngIf="miFormulario.controls['password'].touched && miFormulario.controls['password'].errors?.['minlength']" class="text-red-600">La contraseña debe tener como mínimo 8 caracteres</div>
+                <div *ngIf="miFormulario.controls['password'].touched && miFormulario.controls['password'].errors?.['minlength']" class="text-red-600">La contraseña debe tener como mínimo 7 caracteres</div>
             </div>
 
             <!-- Campo confirmar contraseña -->

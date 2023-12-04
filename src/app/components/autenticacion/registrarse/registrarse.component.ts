@@ -18,7 +18,7 @@ export class RegistrarseComponent {
   constructor(private formBuilder: FormBuilder, private router: Router, private usuarioService: RegistrarusuarioService) {
     this.miFormulario = this.formBuilder.group({
       usuario: ['', [Validators.required, Validators.minLength(4)]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(7)]],
       password_confirmation: [''],
       email: ['', [Validators.required, Validators.email]],
     }, { validator: this.passwordMatchValidator });
@@ -58,6 +58,7 @@ export class RegistrarseComponent {
         this.usuarioService.registrarUsuario(usuarioData).subscribe(
             (response) => {
                 console.log('Respuesta del servidor:', response);
+              this.router.navigate(['/autenticacion/iniciar-sesion']);
 
             },
             (error) => {

@@ -1,21 +1,15 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Usuario} from "../../../models/usuario";
-import {UsuarioService} from "../../../services/usuario.service";
 
 @Component({
   selector: 'app-prueba2',
   templateUrl: './prueba2.component.html',
   styleUrls: ['./prueba2.component.scss']
 })
-export class Prueba2Component implements OnInit {
+export class Prueba2Component{
 
-  @Input() usuarioId: number=0;
-  usuario!: Usuario;
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.usuarioService.getUsuario(this.usuarioId)
-        .subscribe(usuario => this.usuario = usuario);
-  }
+
 }

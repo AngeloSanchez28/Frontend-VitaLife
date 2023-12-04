@@ -1,26 +1,16 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Usuario} from "../models/usuario";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Login } from '../models/login'; // Asegúrate de que la ruta sea correcta
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
-
-  private apiUrl= '';
-  private token = '';
+  private apiUrl = 'http://localhost:8080/usuario/login'; // Reemplaza con la URL correcta
 
   constructor(private http: HttpClient) {}
-
-  getUsuario(id: number): Observable<Usuario> {
-    const url = `${this.apiUrl}`;
-    console.log(url);
-    console.log(this.token);
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.token}`,
-    });
-    return this.http.get<Usuario>(url, { headers });
+  login(user: Login): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, user);
   }
-
 }
