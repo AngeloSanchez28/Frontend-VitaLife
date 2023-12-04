@@ -1,37 +1,8 @@
 footer {
   background: #4abdac;
   color: black;
-  display: flex;
-  justify-content: space-between;
 }
-
-.left{
-  font-family: 'Montserrat', sans-serif;
-  padding-left: 50px;
+.blanco {
+  filter: brightness(0) invert(1);
+  cursor: pointer;
 }
-
-.right{
-  padding-top: 10px;
-  padding-right: 20px;
-}
-
-.icon{
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-
-:host {
-  width: 100%;
-  background-color: #f8f9fa; /* color de fondo del footer */
-  padding: 1rem 0; /* Espaciado dentro del footer */
-  text-align: center;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Opcional: sombra para un efecto elevado */
-}
-
-:host {
-  width: 100%;
-  /* Otros estilos del footer */
-  margin-top: -10rem; /* Ajusta este valor para subir el footer */
-}
-
