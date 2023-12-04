@@ -9,7 +9,7 @@ import {IntranetComponent} from "./intranet.component";
 import {MatTableModule} from "@angular/material/table";
 import { Prueba2Component } from './prueba2/prueba2.component';
 import {FormsModule} from "@angular/forms";
-
+import { TitulosComponent } from './titulos/titulos.component';
 
 
 @NgModule({
@@ -18,6 +18,7 @@ import {FormsModule} from "@angular/forms";
     PruebaComponent,
     IntranetComponent,
     Prueba2Component,
+    TitulosComponent,
   ],
     imports: [
         CommonModule,
