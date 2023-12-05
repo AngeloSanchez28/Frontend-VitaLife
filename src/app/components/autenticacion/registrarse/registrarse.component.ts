@@ -58,6 +58,7 @@ export class RegistrarseComponent {
         this.usuarioService.registrarUsuario(usuarioData).subscribe(
             (response) => {
                 console.log('Respuesta del servidor:', response);
+                this.router.navigate(['/autenticacion/iniciar-sesion']);
               this.router.navigate(['/autenticacion/iniciar-sesion']);
 
             },

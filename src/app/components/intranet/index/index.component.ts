@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {HabitoService} from "../../../services/habito.service";
+import {Habito} from "../../../models/habito";
 
 @Component({
   selector: 'app-index',
@@ -7,15 +9,21 @@ import { Component } from '@angular/core';
 })
 export class IndexComponent {
 
+  constructor( private habitoService: HabitoService) {
+
+    this.habitoPersonal2 = null;
+    this.formuPersonal2 = null;
+    this.habitoPersonal3 = null;
+    this.formuPersonal3 = null;
+  }
+
   public showModal: boolean = false;
-  showErrorModal: boolean = false;
 
   public habitosAgregados: string[] = [];
   public nuevoHabito: string = "";
   public indiceHabitoAgregado: number | null = null;
   showModalAprobado: boolean = false;
   showModalPerder: boolean = false;
-  tipoMensaje: 'felicidades' | 'perdida' | null = null;
 
 
   public habitosEnGrupo: string[] = [];
@@ -25,28 +33,101 @@ export class IndexComponent {
   showModalPerdida: boolean = false;
   tipoMensajeModal: 'felicidades' | 'perdida' | null = null;
 
-  public indiceHabitoActual: number | null = null;
+
   public botonActivo: number | null = null;
 
   public habitosEstablecidos: string[] = ["Dormir 8 horas", "Comer las 3 comidas al día", "Tomar 9 vasos al día", "Limitar el consumo de alcohol y tabaco", "Realizar 30 minutos de actividad física"];
   public indiceHabitoEstablecido: number | null = null;
 
 
-  agregarHabito(form: any) {
-    if (this.nuevoHabito.trim() !== "") {
-      this.habitosAgregados.push(this.nuevoHabito);
-      this.nuevoHabito = ""; // Limpia la variable para el próximo input
-      form.resetForm(); // Resetea el formulario para limpiar los campos
-    }
-  }
+    agregarHabito(form: any) {
+        const nuevoHabitoValor = this.nuevoHabito; // Almacenar el valor en una variable local
 
-  agregarHabitoEnGrupo(form: any) {
-    if (this.nuevoHabitoEnGrupo.trim() !== "") {
-      this.habitosEnGrupo.push(this.nuevoHabitoEnGrupo);
-      this.nuevoHabitoEnGrupo = "";
-      form.resetForm();
+        console.log("Nuevo Hábito:", nuevoHabitoValor);
+
+        if (nuevoHabitoValor && nuevoHabitoValor.trim() !== "") {
+            // Construir el objeto Habito
+            const nuevoHabito: Habito = {
+                nombreHabito: nuevoHabitoValor, // Usar la variable local aquí
+                puntosrecompensahabito: 10,
+                tipohabito: 'Personalizado'
+            };
+
+            // Llamar al servicio para agregar el hábito en la base de datos
+            this.habitoService.agregarHabito(nuevoHabito).subscribe(
+                response => {
+                    console.log('Hábito agregado exitosamente:', response);
+
+                    // Agregar el hábito al array local 'habitosAgregados'
+                    this.habitosAgregados.push(nuevoHabitoValor);
+
+                    // Limpiar la variable para el próximo input
+                    this.nuevoHabito = "";
+
+                    // Resetea el formulario para limpiar los campos
+                    form.resetForm();
+
+                    const responseObject = { success: true, message: 'Hábito agregado exitosamente' };
+                    // Puedes realizar otras acciones después de agregar el hábito si es necesario
+                    return responseObject;
+                },
+                error => {
+                    console.error('Error al agregar hábito:', error);
+                    const errorResponse = { success: false, message: 'Error al agregar hábito' };
+                    // Puedes manejar el error aquí si lo necesitas
+                    return errorResponse;
+                }
+            );
+        }
     }
-  }
+
+
+    agregarHabitoEnGrupo(form: any) {
+        const nuevoHabitoValor = this.nuevoHabitoEnGrupo; // Almacenar el valor en una variable local
+
+        console.log("Nuevo Hábito:", nuevoHabitoValor);
+
+        if (nuevoHabitoValor && nuevoHabitoValor.trim() !== "") {
+            // Construir el objeto Habito
+            const nuevoHabitoEnGrupo: Habito = {
+                nombreHabito: nuevoHabitoValor, // Usar la variable local aquí
+                puntosrecompensahabito: 10,
+                tipohabito: 'En Grupo'
+            };
+
+            // Llamar al servicio para agregar el hábito en el grupo en la base de datos
+            this.habitoService.agregarHabitoGrupo(nuevoHabitoEnGrupo).subscribe(
+                response => {
+                    console.log('Hábito en Grupo agregado exitosamente:', response);
+
+                    // Agregar el hábito al array local 'habitosEnGrupo'
+                    this.habitosEnGrupo.push(nuevoHabitoValor);
+
+                    // Limpiar la variable para el próximo input
+                    this.nuevoHabitoEnGrupo = "";
+
+                    // Resetea el formulario para limpiar los campos
+                    form.resetForm();
+
+                    const responseObject = { success: true, message: 'Hábito en Grupo agregado exitosamente' };
+                    // Puedes realizar otras acciones después de agregar el hábito si es necesario
+                    return responseObject;
+                },
+                error => {
+                    console.error('Error al agregar hábito en Grupo:', error);
+                    const errorResponse = { success: false, message: 'Error al agregar hábito en Grupo' };
+                    // Puedes manejar el error aquí si lo necesitas
+                    return errorResponse;
+                }
+            );
+        }
+    }
+
+    mostrarModal(indiceHabito: number, tipoMensaje: 'felicidades' | 'perdida') {
+        this.showModal = !this.showModal;
+        this.indiceHabitoEstablecido = indiceHabito;
+        this.tipoMensajeModal = tipoMensaje;
+    }
 
   mostrarModalAprobado(indiceHabito: number) {
     this.showModalAprobado = true;
@@ -58,6 +139,16 @@ export class IndexComponent {
     this.indiceHabitoAgregado = indiceHabito;
   }
 
+    mostrarModalFelicidades(indiceHabito: number) {
+        this.showModalFelicidades = true;
+        this.indiceHabitoEnGrupoActual = indiceHabito;
+    }
+
+    mostrarModalPerdida(indiceHabito: number) {
+        this.showModalPerdida = true;
+        this.indiceHabitoEnGrupoActual = indiceHabito;
+    }
+
   eliminarHabitoPersonalizado() {
     if (this.indiceHabitoAgregado !== null) {
       this.habitosAgregados.splice(this.indiceHabitoAgregado, 1);
@@ -65,31 +156,6 @@ export class IndexComponent {
       this.showModalPerder = false;
       this.indiceHabitoAgregado = null;
     }
-  }
-
-  mostrarModal(indiceHabito: number, tipoMensaje: 'felicidades' | 'perdida') {
-    this.showModal = !this.showModal;
-    this.indiceHabitoEstablecido = indiceHabito;
-    this.tipoMensajeModal = tipoMensaje;
-  }
-
-
-  borrarHabito() {
-    if (this.indiceHabitoEstablecido !== null) {
-      this.habitosEstablecidos.splice(this.indiceHabitoEstablecido, 1);
-      this.showModal = false;
-      this.indiceHabitoEstablecido = null;
-    }
-  }
-
-  mostrarModalFelicidades(indiceHabito: number) {
-    this.showModalFelicidades = true;
-    this.indiceHabitoEnGrupoActual = indiceHabito;
-  }
-
-  mostrarModalPerdida(indiceHabito: number) {
-    this.showModalPerdida = true;
-    this.indiceHabitoEnGrupoActual = indiceHabito;
   }
 
   eliminarHabitoEnGrupo() {
@@ -101,26 +167,19 @@ export class IndexComponent {
     }
   }
 
+    borrarHabito() {
+        if (this.indiceHabitoEstablecido !== null) {
+            this.habitosEstablecidos.splice(this.indiceHabitoEstablecido, 1);
+            this.showModal = false;
+            this.indiceHabitoEstablecido = null;
+        }
+    }
+
 
   habitoPersonal2: HTMLFormElement | null;
   formuPersonal2: HTMLFormElement | null;
   habitoPersonal3: HTMLFormElement | null;
   formuPersonal3: HTMLFormElement | null;
-
-  constructor() {
-    this.habitoPersonal2 = null;
-    this.formuPersonal2 = null;
-    this.habitoPersonal3 = null;
-    this.formuPersonal3 = null;
-  }
-
-  ngOnInit(): void {
-    this.habitoPersonal2 = document.querySelector('#habitoPersonal2') as HTMLFormElement;
-    this.formuPersonal2 = document.querySelector('#formuPersonal2') as HTMLFormElement;
-    this.habitoPersonal3 = document.querySelector('#habitoPersonal3') as HTMLFormElement;
-    this.formuPersonal3 = document.querySelector('#formuPersonal3') as HTMLFormElement;
-  }
-
   habito2(): void {
     this.botonActivo = 2;
     const minicontenedor2 = document.getElementById('minicontenedor2');
@@ -156,42 +215,5 @@ export class IndexComponent {
       minicontenedor3.style.display = 'block';
     }
   }
-
-  onSubmitPersonal2(): void {
-    // Lógica para procesar el formulario del minicontenedor 2
-    if (this.habitoPersonal2 && this.formuPersonal2) {
-      const habitoPersonal2Value = this.habitoPersonal2['value'] as string;
-      const transaction: TransactionInterface = {
-        habitoPersonal: habitoPersonal2Value,
-      };
-      this.renderTransaction(transaction);
-    }
-  }
-
-  onSubmitPersonal3(): void {
-    // Lógica para procesar el formulario del minicontenedor 3
-    if (this.habitoPersonal3 && this.formuPersonal3) {
-      const habitoPersonal3Value = this.habitoPersonal3['value'] as string;
-      const transaction: TransactionInterface = {
-        habitoPersonal: habitoPersonal3Value,
-      };
-      this.renderTransaction(transaction);
-    }
-  }
-
-
-  renderTransaction(transaction: TransactionInterface): void {
-    const tableRow = document.createElement('tr');
-    const tableDataHabito = document.createElement('td');
-    tableDataHabito.textContent = transaction.habitoPersonal;
-    tableRow.appendChild(tableDataHabito);
-    const tBody = document.querySelector('tbody');
-    if (tBody) {
-      tBody.prepend(tableRow);
-    }
-  }
 }
 
-interface TransactionInterface {
-  habitoPersonal: string;
-}

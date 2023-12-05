@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="medallas">
-    <h1 class="titulo">Titulos obtenidos</h1>
+    <a routerLink="/intranet/titulos"> <h1 class="titulo">Titulos obtenidos</h1> </a>
     <div class="interior">
       <div>
         <img class="img-medallas" src="./assets/oro.png" alt="">
@@ -39,7 +39,9 @@
     </div>
   </div>
 </section>
+
 <section class="contenedor">
+
   <div class="minicontenedor" id="minicontenedor1">
     <div class="habitos">
       <div class="nombre">
@@ -125,6 +127,7 @@
         </button>
       </div>
     </div>
+
     <div>
       <form id="habitoPersonal2" (ngSubmit)="agregarHabito(habitoForm)" #habitoForm="ngForm">
         <input type="text" id="fname3" name="nombreHabito" [(ngModel)]="nuevoHabito"
@@ -192,11 +195,12 @@
           <tr *ngIf="habitosAgregados.length === 0" class="trow">
             <!-- Mensaje si no hay hábitos en grupo agregados aún -->
             <td colspan="3">
-              <p style="text-align: center; color: gray; font-size: 20px;">No hay hábitos en grupo agregados aún</p>
+              <p style="text-align: center; color: gray; font-size: 20px;">No hay hábitos en grupo agregados</p>
             </td>
           </tr>
         </tbody>
       </table>
+
     </div>
   </div>
 
@@ -223,7 +227,7 @@
     <div>
       <!-- Formulario para agregar hábitos en grupo -->
       <form (ngSubmit)="agregarHabitoEnGrupo(habitoFormGrupo)" #habitoFormGrupo="ngForm">
-        <input type="text" id="fname3" name="nombreHabito" [(ngModel)]="nuevoHabitoEnGrupo"
+        <input type="text" id="fname" name="nombreHabito" [(ngModel)]="nuevoHabitoEnGrupo"
           placeholder="Tu nuevo hábito en grupo" required>
         <button type="submit" class="enviar">Enviar</button>
       </form>
@@ -288,7 +292,7 @@
           <tr *ngIf="habitosEnGrupo.length === 0" class="trow">
             <!-- Mensaje si no hay hábitos en grupo agregados aún -->
             <td colspan="3">
-              <p style="text-align: center; color: gray; font-size: 20px;">No hay hábitos en grupo agregados aún</p>
+              <p style="text-align: center; color: gray; font-size: 20px;">No hay hábitos en grupo agregados</p>
             </td>
           </tr>
         </tbody>
