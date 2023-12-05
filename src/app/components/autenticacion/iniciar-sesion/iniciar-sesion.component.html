@@ -8,25 +8,30 @@
   <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
     <h1 class> Inicia Sesión en VitaLife</h1>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="formularioIncompleto" class="text-red-600">
+        Rellena todos los campos.
+      </div>
+
       <!-- Campo de usuario -->
       <div class="mb-4">
         <label for="usuario" id="usuario" class="block text-black font-Montserrat text-2xl">Usuario:</label>
         <input type="text" formControlName="usuario" placeholder="Ingresa tu usuario" class="w-full border border-gray-300 rounded-md py-3 px-3 focus:outline-none" autocomplete="off">
         <div *ngIf="loginForm.controls['usuario'].touched && loginForm.controls['usuario'].errors?.['required']" class="text-red-600">Este campo es obligatorio.</div>
+        <div *ngIf="loginForm.controls['usuario'].touched && loginForm.controls['usuario'].errors?.['minlength']" class="text-red-600">El usuario debe tener al menos 4 caracteres.</div>
       </div>
 
       <!-- Campo de contraseña -->
       <div class="mb-4">
-        <label for="contrasena" class="block text-black font-Montserrat text-2xl">Contraseña:</label>
+        <label for="password" class="block text-black font-Montserrat text-2xl">Contraseña:</label>
         <div class="password-input-container">
-          <!-- Utiliza la propiedad mostrarPassword para cambiar el tipo de input -->
-          <input [type]="mostrarPassword ? 'text' : 'password'" placeholder="Ingresa tu contraseña" id="contrasena" name="contrasena" class="w-full border border-gray-300 rounded-md py-3 px-3  focus:outline-none" autocomplete="off">
-          <!-- Elimina el atributo onclick y utiliza (click) para llamar a toggleMostrarPassword() -->
+          <input [type]="mostrarPassword ? 'text' : 'password'" id="password" placeholder="Ingresa tu contraseña" formControlName="password" class="w-full border border-gray-300 rounded-md py-3 px-3 focus:outline-none pr-10" autocomplete="off">
           <button id="show-password-button" type="button" class="show-password-button" (click)="toggleMostrarPassword()">
-            <!-- Cambia la imagen y el texto alternativo en función del estado de mostrarPassword -->
-            <img id="eye-icon" [src]="mostrarPassword ? './assets/ocultar.png' : './assets/mostrar.png'" [alt]="mostrarPassword ? 'Ocultar Contraseña' : 'Mostrar Contraseña'" />
+             <img id="eye-icon" [src]="mostrarPassword ? './assets/ocultar.png' : './assets/mostrar.png'" [alt]="mostrarPassword ? 'Ocultar Contraseña' : 'Mostrar Contraseña'" />
           </button>
-        </div>
+         </div>
+        <div *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].errors?.['required']" class="text-red-600">Este campo es obligatorio.</div>
+        <div *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].errors?.['minlength']" class="text-red-600">La contraseña debe tener como mínimo 7 caracteres</div>
+
       </div>
 
 
@@ -36,7 +41,7 @@
         <a href="#" class="enlace hover:underline">¿Olvidaste tu contraseña?</a>
       </div>
       <!-- Botón de Iniciar Sesión -->
-      <button type="submit" routerLink="/intranet/index" class="login-button rounded-md py-2 px-4 w-full">Iniciar sesión</button>
+      <button type="submit"  class="login-button rounded-md py-2 px-4 w-full">Iniciar sesión</button>
     </form>
     <!-- Enlace de Regístrate -->
     <div class="mt-6  text-center">
