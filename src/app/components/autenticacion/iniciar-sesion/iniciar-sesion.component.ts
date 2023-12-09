@@ -48,6 +48,8 @@ export class IniciarSesionComponent {
         // Llamar al método de inicio de sesión en el servicio
         this.usuarioService.login(user).subscribe(
             (response) => {
+                console.log(response);
+                localStorage.setItem('token', response.token);
                 // Autenticación exitosa, redirigir al usuario
                 this.router.navigate(['/intranet/index']);
             },
@@ -55,5 +57,6 @@ export class IniciarSesionComponent {
                 console.error('Error en el inicio de sesión', error);
             }
         );
+
     }
 }

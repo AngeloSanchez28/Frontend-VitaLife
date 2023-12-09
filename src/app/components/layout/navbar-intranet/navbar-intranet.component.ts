@@ -28,14 +28,8 @@ export class NavbarIntranetComponent implements OnInit {
     }, error => {
       console.error('Error al obtener datos:', error);
     });
+
+
   }
-
-
-
-
-
-
-
-
 
 }

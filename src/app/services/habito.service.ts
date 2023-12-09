@@ -2,38 +2,37 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Habito } from '../models/habito';
-import {UsuarioService} from "./usuario.service";
+import {environment} from "../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 export class HabitoService {
 
-    private apiUrl = 'http://ec2-54-198-239-231.compute-1.amazonaws.com/habitos/agregar';
-
-    constructor(
-        private http: HttpClient,
-        private usuarioService: UsuarioService
-    ) {}
+    constructor(private http: HttpClient) {
+    }
 
     agregarHabito(nuevoHabito: Habito): Observable<Habito> {
-        const url = `${this.apiUrl}`;
-        const headers = this.createHeaders();
+        const token = localStorage.getItem('token');
+        console.log(`token: ${token}`)
+        const url = `${environment.host}/habitos/agregar`;
+        const headers = new HttpHeaders({
+            'Content-Type': `application/json`,
+            Authorization: `Bearer ${token}`,  // Usar la variable local 'token'
+        });
 
         return this.http.post<Habito>(url, nuevoHabito, { headers });
     }
 
     agregarHabitoGrupo(nuevoHabitoGrupo: Habito): Observable<Habito> {
-        const url = `${this.apiUrl}`;
-        const headers = this.createHeaders();
+        const token = localStorage.getItem('token');
+        console.log(`token: ${token}`)
+        const url = `${environment.host}/habitos/agregar`;
+        const headers = new HttpHeaders({
+            'Content-Type': `application/json`,
+            Authorization: `Bearer ${token}`,  // Usar la variable local 'token'
+        });
 
         return this.http.post<Habito>(url, nuevoHabitoGrupo, { headers });
-    }
-
-    private createHeaders(): HttpHeaders {
-        const token = this.usuarioService.getToken();
-        return new HttpHeaders({
-            Authorization: `Bearer ${token}`,
-        });
     }
 }

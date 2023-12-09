@@ -1,15 +1,22 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HabitoService} from "../../../services/habito.service";
 import {Habito} from "../../../models/habito";
+import {MostrarUsuarioService} from "../../../services/mostrar-usuario.service";
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss']
 })
-export class IndexComponent {
+export class IndexComponent implements OnInit {
+    username: string = 'NombreUsuario';
+    correo: string = 'Correo';
 
-  constructor( private habitoService: HabitoService) {
+    ngOnInit(): void {
+        this.ObtenerUsuario();
+    }
+
+  constructor( private habitoService: HabitoService, private mostrarUsuarioService: MostrarUsuarioService  ) {
 
     this.habitoPersonal2 = null;
     this.formuPersonal2 = null;
@@ -215,5 +222,21 @@ export class IndexComponent {
       minicontenedor3.style.display = 'block';
     }
   }
+
+  ObtenerUsuario(): void {
+
+        this.mostrarUsuarioService.getObtenerDatos().subscribe(response => {
+            console.log(response);
+            if (response) {
+                this.username = response.username; // Ajusta esto según la estructura real
+                this.correo = response.correo; // Ajusta esto según la estructura real
+            }
+        }, error => {
+            console.error('Error al obtener datos:', error);
+        });
+
+
+    }
+
 }
 
