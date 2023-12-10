@@ -2,10 +2,12 @@ import {Habito} from "./habito";
 
 export interface Titulo {
     id_titulo: number;
-    nombretitulo: String;
+    descripcion: null;
+    nombretitulo: string;
     puntosrequeridostitulo: number;
-    niveltitulo: String;
+    niveltitulo: string;
     progresotitulo: number;
-    obtenidotitulo: Boolean;
+    obtenidotitulo: boolean;
     usuariohabi: Habito[];
+
 }

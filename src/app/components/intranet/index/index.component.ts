@@ -134,6 +134,8 @@ export class IndexComponent implements OnInit {
         this.showModal = !this.showModal;
         this.indiceHabitoEstablecido = indiceHabito;
         this.tipoMensajeModal = tipoMensaje;
+
+
     }
 
   mostrarModalAprobado(indiceHabito: number) {

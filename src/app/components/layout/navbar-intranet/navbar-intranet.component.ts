@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MostrarUsuarioService } from "../../../services/mostrar-usuario.service";
 
-
-
 @Component({
   selector: 'app-navbar-intranet',
   templateUrl: './navbar-intranet.component.html',
@@ -28,7 +26,6 @@ export class NavbarIntranetComponent implements OnInit {
     }, error => {
       console.error('Error al obtener datos:', error);
     });
-
 
   }
 
