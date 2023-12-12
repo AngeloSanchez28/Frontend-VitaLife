@@ -3,9 +3,9 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static(__dirname+'/dist/frontend-vita-life'));
-app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname+'/dist/frontend-vita-life/index.html'));
-});
+app.use(express.static('./dist/frontend-vita-life'));
+app.get('/*',(req,res) =>
+  res.sendFile('index.html', {root: 'dist/frontend-vita-life/'}),
+);
 
 app.listen(process.env.PORT || 8080);
