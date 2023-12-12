@@ -9,7 +9,6 @@ import {environment} from "../../environments/environment"; // Asegúrate de que
 })
 export class UsuarioService {
 
-
   private username: string | undefined;
   constructor(private http: HttpClient) {}
 
@@ -18,8 +17,8 @@ export class UsuarioService {
     return this.http.post(`${environment.host}/usuario/login`, user);
   }
 
-    getUsername(): string | undefined {
+  getUsername(): string | undefined {
         return this.username;
-    }
+  }
 
 }

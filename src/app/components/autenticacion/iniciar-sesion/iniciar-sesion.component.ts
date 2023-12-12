@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from "../../../services/usuario.service";
@@ -24,6 +24,7 @@ export class IniciarSesionComponent {
             this.formularioIncompleto = false;
         });
     }
+
 
     toggleMostrarPassword() {
         this.mostrarPassword = !this.mostrarPassword;
@@ -57,6 +58,6 @@ export class IniciarSesionComponent {
                 console.error('Error en el inicio de sesión', error);
             }
         );
-
     }
+
 }
