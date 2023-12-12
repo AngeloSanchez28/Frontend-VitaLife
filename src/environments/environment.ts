@@ -1,3 +1,3 @@
 export const environment = {
-  host: 'https://54.162.159.79'
+  host: 'http://ec2-3-91-104-22.compute-1.amazonaws.com'
 };
