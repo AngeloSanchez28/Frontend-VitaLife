@@ -1,27 +1,69 @@
-# FrontendVitaLife
+# Frontend VitaLife
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+[![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
 
-## Development server
+## 📋 Descripción
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+VitaLife es una aplicación web moderna desarrollada con Angular que ayuda a los usuarios a establecer y consolidar hábitos saludables. Proporciona una interfaz intuitiva y responsiva, permitiendo realizar el seguimiento diario de actividades, metas y hábitos relacionados al bienestar personal.
 
-## Code scaffolding
+## 🚀 Características
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Registro y autenticación de usuarios
+- Panel personalizado con seguimiento de hábitos diarios
+- Visualización de estadísticas y progreso
+- Recordatorios y notificaciones
+- Interfaz amigable y adaptable a distintos dispositivos
+- Arquitectura modular que permite una fácil escalabilidad
 
-## Build
+## 🛠️ Tecnologías Utilizadas
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Angular**: Framework principal de desarrollo
+- **TypeScript**: Lenguaje de programación
+- **SCSS/Sass**: Preprocesador de CSS
+- **Angular Material**: Componentes de UI
 
-## Running unit tests
+## 📦 Instalación
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+# Clonar el repositorio
+git clone https://github.com/AngeloSanchez28/Frontend-VitaLife.git
 
-## Running end-to-end tests
+# Navegar al directorio del proyecto
+cd Frontend-VitaLife
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Instalar dependencias
+npm install
 
-## Further help
+# Iniciar servidor de desarrollo
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 🖥️ Uso
+
+Una vez que la aplicación esté en funcionamiento, puedes acceder a ella a través de `http://localhost:4200/` en tu navegador.
+
+## 📚 Estructura del Proyecto
+
+```
+src/
+├── app/
+│   ├── components/      # Componentes reutilizables
+│   ├── services/        # Servicios para la lógica de negocio
+│   ├── models/          # Interfaces y modelos
+├── assets/              # Recursos estáticos (imágenes, fuentes, etc.)
+└── environments/        # Configuraciones de entorno
+```
+
+## 🧪 Pruebas
+
+```bash
+# Ejecutar pruebas unitarias
+ng test
+
+# Ejecutar pruebas end-to-end
+ng e2e
+```
+
+Desarrollado con ❤️ por Felines
